@@ -57,11 +57,19 @@
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
         if(!audio) return; //para a função de não houver audio associado
         audio.currentTime=0; //volta ao inicio do audio
-        audio.play();
+        audio.play();//toca o audio
         key.classList.add('playing'); //adiciona o efeito do css .playing
 
-    });
-        const keys = document.querySelectorAll('.key');//seleciona todo conteudo da keys
+    }); 
+
+    function removeTransition(e){
+        if(e.propertyName !=='transform') return; //passa para o proximo campo se nao for o transform
+        this.classList.remove('playing'); //remove o efeito
+    }
+
+    const keys = document.querySelectorAll('.key');//seleciona todo conteudo da keys
+    // console.log(keys.length);//exibe a quantidade dentro da keys
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 </body>

@@ -1,6 +1,7 @@
 .keys{
     display: flex;
     min-height: 90vh;
+    min-width: 1ex;
     align-items: center;
     justify-content: center;
 }
